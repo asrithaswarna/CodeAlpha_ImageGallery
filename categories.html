@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Categories · VisualVerse</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        .categories-container {
+            padding: 20px 40px 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 24px;
+        }
+        .category-card {
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            transition: 0.25s ease;
+            border: 1px solid #eaeef5;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .category-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.10);
+        }
+        .category-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block;
+            background: #e8ecf5;
+        }
+        .category-card .info {
+            padding: 16px 18px 18px;
+            text-align: center;
+        }
+        .category-card .info h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0a0a2a;
+            margin: 0 0 4px 0;
+        }
+        .category-card .info span {
+            font-size: 0.85rem;
+            color: #7a7a9a;
+            display: block;
+        }
+        @media (max-width: 700px) {
+            .categories-container { padding: 16px; }
+            .categories-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 16px; }
+            .category-card img { height: 120px; }
+        }
+        @media (max-width: 400px) {
+            .categories-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .category-card img { height: 100px; }
+            .category-card .info { padding: 10px 12px; }
+            .category-card .info h4 { font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="header">
+        <h1>📷 <span>Visual</span>Verse</h1>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        <nav class="navbar" aria-label="Main navigation">
+            <ul id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="categories.html" class="active">Categories</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-title">
+        <h2>Browse by Category</h2>
+        <p>Find the perfect collection for your mood</p>
+    </div>
+
+    <section class="categories-container" aria-label="Image categories">
+        <div class="categories-grid">
+            <a href="category.html?cat=beaches" class="category-card">
+                <img src="https://picsum.photos/seed/beach_cat/400/300" alt="Beaches category" loading="lazy" />
+                <div class="info"><h4>🏖️ Beaches</h4><span>8 photos</span></div>
+            </a>
+            <a href="category.html?cat=mountains" class="category-card">
+                <img src="https://picsum.photos/seed/mountain_cat/400/300" alt="Mountains category" loading="lazy" />
+                <div class="info"><h4>🏔️ Mountains</h4><span>8 photos</span></div>
+            </a>
+            <a href="category.html?cat=cities" class="category-card">
+                <img src="https://picsum.photos/seed/city_cat/400/300" alt="Cities category" loading="lazy" />
+                <div class="info"><h4>🌆 Cities</h4><span>8 photos</span></div>
+            </a>
+            <a href="category.html?cat=historical" class="category-card">
+                <img src="https://picsum.photos/seed/historical_cat/400/300" alt="Historical category" loading="lazy" />
+                <div class="info"><h4>🏛️ Historical</h4><span>8 photos</span></div>
+            </a>
+            <a href="category.html?cat=waterfalls" class="category-card">
+                <img src="https://picsum.photos/seed/waterfall_cat/400/300" alt="Waterfalls category" loading="lazy" />
+                <div class="info"><h4>💧 Waterfalls</h4><span>8 photos</span></div>
+            </a>
+            <a href="category.html?cat=wildlife" class="category-card">
+                <img src="https://picsum.photos/seed/wildlife_cat/400/300" alt="Wildlife category" loading="lazy" />
+                <div class="info"><h4>🐾 Wildlife</h4><span>8 photos</span></div>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 <strong>VisualVerse</strong> — All rights reserved.
+    </footer>
+
+    <!-- ═══ LIGHTBOX ═══ -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose">&times;</button>
+            <button class="lightbox-nav prev" id="lightboxPrev">‹</button>
+            <button class="lightbox-nav next" id="lightboxNext">›</button>
+            <img src="" alt="Lightbox" id="lightboxImg" />
+            <div class="lightbox-info">
+                <h3 id="lightboxTitle">Image Title</h3>
+                <p id="lightboxCategory">Category</p>
+                <p class="exif" id="lightboxExif">📍 Location • 📷 Camera • 📅 Date</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

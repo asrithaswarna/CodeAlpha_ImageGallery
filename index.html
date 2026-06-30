@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VisualVerse</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ═══ HEADER ═══ -->
+    <header id="header">
+        <h1>📷 <span>Visual</span>Verse</h1>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="navbar" aria-label="Main navigation">
+            <ul id="navLinks">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ═══ MAIN HERO ═══ -->
+    <section class="main">
+        <h2>Where every pixel <em>tells a story.</em></h2>
+        <p>
+            A curated collection of stunning photography — from nature to city life.
+            Explore, get inspired, and see the world through our lens.
+        </p>
+        <div class="btn-group">
+            <a href="gallery.html" class="btn btn-primary">Explore Gallery →</a>
+            <a href="categories.html" class="btn btn-outline">Browse Categories</a>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer>
+        &copy; 2026 <strong>VisualVerse</strong> — All rights reserved.
+    </footer>
+
+    <!-- ═══ LIGHTBOX ═══ -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">&times;</button>
+            <button class="lightbox-nav prev" id="lightboxPrev" aria-label="Previous image">‹</button>
+            <button class="lightbox-nav next" id="lightboxNext" aria-label="Next image">›</button>
+            <img src="" alt="Lightbox" id="lightboxImg" />
+            <div class="lightbox-info">
+                <h3 id="lightboxTitle">Image Title</h3>
+                <p id="lightboxCategory">Category</p>
+                <p class="exif" id="lightboxExif">📍 Location • 📷 Camera • 📅 Date</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery · VisualVerse</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        .search-wrapper {
+            display: flex;
+            justify-content: center;
+            margin: 20px auto 30px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+        .search-wrapper input {
+            width: 100%;
+            padding: 14px 50px 14px 50px;
+            border: 2px solid #dce0e9;
+            border-radius: 50px;
+            font-size: 1rem;
+            background: #ffffff;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            font-family: inherit;
+            color: #1a1a2e;
+        }
+        .search-wrapper input::placeholder {
+            color: #a0a5b8;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+        .search-wrapper input:focus {
+            outline: none;
+            border-color: #6c63ff;
+            box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.15), 0 4px 20px rgba(0, 0, 0, 0.06);
+            transform: scale(1.01);
+        }
+        .search-wrapper .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            color: #7a7a9a;
+            pointer-events: none;
+            transition: color 0.3s ease;
+        }
+        .search-wrapper input:focus + .search-icon,
+        .search-wrapper input:focus ~ .search-icon {
+            color: #6c63ff;
+        }
+        .search-wrapper .clear-btn {
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            color: #a0a5b8;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 50%;
+            transition: all 0.25s ease;
+            display: none;
+            line-height: 1;
+        }
+        .search-wrapper .clear-btn:hover {
+            color: #6c63ff;
+            background: rgba(108, 99, 255, 0.08);
+            transform: translateY(-50%) scale(1.1);
+        }
+        .search-wrapper .clear-btn.visible { display: block; }
+        @media (max-width: 500px) {
+            .search-wrapper { width: 95%; }
+            .search-wrapper input { padding: 12px 40px 12px 40px; font-size: 0.9rem; }
+            .search-wrapper .search-icon { left: 14px; font-size: 1rem; }
+            .search-wrapper .clear-btn { right: 14px; font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <h1>📷 <span>Visual</span>Verse</h1>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        <nav class="navbar" aria-label="Main navigation">
+            <ul id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gallery.html" class="active">Gallery</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-title">
+        <h2>Explore the Collection</h2>
+        <p>Curated images from around the world</p>
+        <div class="search-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" placeholder="Search images by title or category…" aria-label="Search images" autocomplete="off" />
+            <button class="clear-btn" id="clearSearch" aria-label="Clear search">&times;</button>
+        </div>
+    </div>
+
+    <section class="gallery-container">
+        <div class="grid" id="galleryGrid"></div>
+        <div class="load-more-wrapper">
+            <button class="btn btn-outline" id="loadMoreBtn">Load More</button>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 <strong>VisualVerse</strong> — All rights reserved.
+    </footer>
+
+    <!-- ═══ LIGHTBOX ═══ -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose">&times;</button>
+            <button class="lightbox-nav prev" id="lightboxPrev">‹</button>
+            <button class="lightbox-nav next" id="lightboxNext">›</button>
+            <img src="" alt="Lightbox" id="lightboxImg" />
+            <div class="lightbox-info">
+                <h3 id="lightboxTitle">Image Title</h3>
+                <p id="lightboxCategory">Category</p>
+                <p class="exif" id="lightboxExif">📍 Location • 📷 Camera • 📅 Date</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const clearBtn = document.getElementById('clearSearch');
+            if (searchInput && clearBtn) {
+                searchInput.addEventListener('input', function() {
+                    clearBtn.classList.toggle('visible', this.value.trim().length > 0);
+                });
+                clearBtn.addEventListener('click', function() {
+                    searchInput.value = '';
+                    searchInput.dispatchEvent(new Event('input'));
+                    searchInput.focus();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
